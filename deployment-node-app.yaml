@@ -1,0 +1,22 @@
+apiVersion: apps/v1  # Specifies the API version for the Deployment resource.
+kind: Deployment  # Defines the resource type as a Deployment.
+metadata: #more info regarding the deployment
+  name: my-node-app  # The name of the Deployment.
+
+spec:
+  replicas:  3 # Defines the number of pod replicas to run (3 Nginx instances).
+  
+  selector:  # Specifies how to identify which Pods belong to this Deployment.
+    matchLabels:
+      app: node-app # Matches Pods with the label 'app: nginx'.
+
+  template:  # Defines the template for the Pods that will be created.
+    metadata:
+      labels:
+        app: node-app  # Labels applied to the Pods for identification.
+
+    spec:  # Defines the container specifications.
+      containers:
+      - name: node-app  # The name of the container.
+        image: philippaul/node-demo-app:01  # The Docker image to use (Nginx version 1.14.2).
+        

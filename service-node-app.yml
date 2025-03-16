@@ -1,0 +1,12 @@
+apiVersion: v1  # API version for Service
+kind: Service  # Defines the resource type as Service
+metadata:
+  name: service-my-node-app  # Name of the service
+spec:
+  selector:
+    app: node-app  # Selects pods with this label
+  type: LoadBalancer  # Default type, allows internal communication
+  ports:
+    - name: http # Protocol type
+      port: 8080  # Exposed service port
+      targetPort: 3000  # Port on the pod receiving traffic
